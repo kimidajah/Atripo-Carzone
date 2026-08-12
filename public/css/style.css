@@ -1,0 +1,306 @@
+:root {
+    /* 4-Color Theme Palette */
+    --theme-color-1: #FAA87D; /* Stripe 1: Peach / Soft Coral Orange */
+    --theme-color-2: #FED9B3; /* Stripe 2: Light Warm Sand / Soft Peach */
+    --theme-color-3: #FFFEE3; /* Stripe 3: Soft Cream / Light Ivory */
+    --theme-color-4: #CFE8FF; /* Stripe 4: Pastel Sky Blue */
+
+    --primary-gold: var(--theme-color-1);
+    --gold: var(--theme-color-1);
+    --dark-gold: #E07638; /* Deeper shade for hover states and text legibility */
+    --light-gold: var(--theme-color-2);
+    --bg-main: var(--theme-color-3);
+    --text-dark: #212529;
+    --text-muted: #6C757D;
+    --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    --hover-shadow: 0 10px 25px rgba(250, 168, 125, 0.22);
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-dark);
+    min-height: 100vh;
+}
+
+/* Custom Color Utilities */
+.text-warning {
+    color: var(--dark-gold) !important;
+}
+
+.bg-warning {
+    background-color: var(--theme-color-1) !important;
+}
+
+.fw-extrabold {
+    font-weight: 800 !important;
+}
+
+/* Custom Buttons */
+.btn {
+    border-radius: 8px;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-gold {
+    background-color: var(--theme-color-1);
+    color: #212529;
+    font-weight: 600;
+    border: none;
+}
+
+.btn-gold:hover, .btn-gold:focus {
+    background-color: var(--dark-gold);
+    color: #FFFFFF;
+    box-shadow: 0 4px 12px rgba(224, 118, 56, 0.35);
+    transform: translateY(-1px);
+}
+
+.btn-outline-gold {
+    border: 1px solid var(--theme-color-1);
+    color: var(--dark-gold);
+    font-weight: 600;
+    background: transparent;
+}
+
+.btn-outline-gold:hover {
+    background-color: var(--theme-color-1);
+    color: #212529;
+}
+
+/* Fallback mappings for dark buttons to theme colors */
+.btn-dark {
+    background-color: var(--theme-color-1) !important;
+    border-color: var(--theme-color-1) !important;
+    color: #212529 !important;
+    font-weight: 600;
+}
+
+.btn-dark:hover, .btn-dark:focus {
+    background-color: var(--dark-gold) !important;
+    border-color: var(--dark-gold) !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 4px 12px rgba(224, 118, 56, 0.35);
+}
+
+.btn-outline-dark {
+    border-color: var(--theme-color-1) !important;
+    color: var(--dark-gold) !important;
+    font-weight: 600;
+    background-color: transparent !important;
+}
+
+.btn-outline-dark:hover, .btn-outline-dark:focus {
+    background-color: var(--theme-color-1) !important;
+    border-color: var(--theme-color-1) !important;
+    color: #212529 !important;
+}
+
+/* Sidebar Styling - BRIGHT LIGHT THEME */
+.sidebar {
+    width: 260px;
+    background: #FFFFFF;
+    color: #212529;
+    min-height: 100vh;
+    border-right: 1px solid rgba(224, 215, 205, 0.6);
+    box-shadow: 2px 0 15px rgba(0, 0, 0, 0.02);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.offcanvas.bg-dark {
+    background-color: #FFFFFF !important;
+    color: #212529 !important;
+}
+
+.sidebar .nav-header {
+    font-size: 0.725rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #9299A0;
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
+    padding-left: 0.85rem;
+}
+
+.sidebar .nav-link {
+    color: #495057;
+    padding: 0.65rem 0.85rem;
+    border-radius: 8px;
+    margin-bottom: 0.25rem;
+    font-size: 0.925rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar .nav-link i {
+    font-size: 1.15rem;
+    margin-right: 0.75rem;
+    color: #6C757D;
+    transition: all 0.25s ease;
+}
+
+.sidebar .nav-link:hover {
+    color: var(--dark-gold);
+    background-color: var(--theme-color-3);
+    transform: translateX(3px);
+}
+
+.sidebar .nav-link:hover i {
+    color: var(--dark-gold);
+    transform: scale(1.1);
+}
+
+.sidebar .nav-link.active {
+    color: #212529;
+    background: linear-gradient(135deg, var(--theme-color-1) 0%, #F79760 100%);
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(250, 168, 125, 0.35);
+}
+
+.sidebar .nav-link.active i {
+    color: #212529;
+}
+
+/* Topbar Styling */
+.topbar {
+    background: #FFFFFF;
+    border-bottom: 1px solid rgba(224, 215, 205, 0.6);
+    padding: 0.85rem 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+}
+
+.brand-title {
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: #1A1D20;
+}
+
+.brand-accent {
+    color: var(--dark-gold);
+}
+
+/* Dynamic Cards - SMOOTH & ELEGANT */
+.card {
+    border-radius: 12px;
+    border: 1px solid rgba(254, 217, 179, 0.4);
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-stat {
+    border: none;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    border-left: 4px solid var(--theme-color-1);
+    background-color: #FFFFFF;
+}
+
+.card-stat:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--hover-shadow);
+}
+
+.stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--theme-color-2);
+    color: var(--dark-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+}
+
+/* Badges */
+.badge {
+    border-radius: 6px;
+    padding: 0.4em 0.7em;
+}
+
+.badge-available {
+    background-color: #D1E7DD;
+    color: #0F5132;
+    border: 1px solid #BADBCC;
+    font-weight: 600;
+}
+
+.badge-reserved {
+    background-color: var(--theme-color-2);
+    color: #7A3E1D;
+    border: 1px solid var(--theme-color-1);
+    font-weight: 600;
+}
+
+.badge-sold {
+    background-color: #E2E3E5;
+    color: #41464B;
+    border: 1px solid #D3D6D8;
+    font-weight: 600;
+}
+
+.badge-role-admin {
+    background-color: var(--theme-color-1);
+    color: #212529;
+    font-weight: 700;
+}
+
+.badge-role-owner {
+    background-color: #212529;
+    color: var(--theme-color-1);
+    border: 1px solid var(--theme-color-1);
+    font-weight: 700;
+}
+
+/* Custom Table */
+.table th {
+    font-weight: 600;
+    color: #495057;
+    background-color: var(--theme-color-2);
+    border-bottom: 2px solid var(--theme-color-1);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.table td {
+    vertical-align: middle;
+    font-size: 0.925rem;
+}
+
+/* Print CSS */
+@media print {
+    .sidebar, .topbar, .btn-print, .filter-card, .pagination, .action-column {
+        display: none !important;
+    }
+
+    body {
+        background-color: #FFFFFF !important;
+        color: #000000 !important;
+        font-size: 11pt;
+    }
+
+    .main-content {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .card {
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    .table {
+        width: 100% !important;
+        border-collapse: collapse !important;
+    }
+
+    .table th, .table td {
+        border: 1px solid #000000 !important;
+        padding: 6px 8px !important;
+    }
+}
