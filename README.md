@@ -91,12 +91,29 @@ Aplikasi memiliki **2 Role Utama** dengan tingkat hak akses dan fungsi yang terp
 
 ---
 
-## 🚀 4. Cara Menjalankan Aplikasi (Getting Started)
+## 🐳 4. Menjalankan Aplikasi Menggunakan Docker & File SQL
+
+Tersedia file dump SQL [database/sorummobil.sql](file:///home/hilman/Projects/marsyal/sorummobil/database/sorummobil.sql) dan konfigurasi Docker Compose untuk menjalankan aplikasi beserta database MySQL secara instan.
+
+### Menjalankan dengan Docker Compose:
+```bash
+# 1. Jalankan container Docker (App + MySQL + phpMyAdmin)
+docker-compose up -d --build
+
+# 2. Aplikasi siap diakses melalui browser:
+#    - Web Application: http://localhost:8000
+#    - phpMyAdmin (GUI DB): http://localhost:8080 (User: root, Password: root_password)
+```
+
+> **Catatan Import SQL**: Container MySQL secara otomatis mengimpor file `database/sorummobil.sql` saat pertama kali dijalankan (`/docker-entrypoint-initdb.d/`).
+
+---
+
+## 🚀 5. Cara Menjalankan Aplikasi Secara Manual (Tanpa Docker)
 
 ### Prasyarat (Prerequisites)
 - PHP >= 8.3
 - Composer
-- Node.js & NPM (Opsional)
 
 ### Langkah Instalasi:
 ```bash
@@ -120,7 +137,7 @@ Aplikasi dapat diakses melalui browser di **`http://127.0.0.1:8000`**.
 
 ---
 
-## 🧪 5. Pengujian Otomatis (Testing)
+## 🧪 6. Pengujian Otomatis (Testing)
 Aplikasi ini dilengkapi dengan pengujian unit & fitur menggunakan PHPUnit:
 ```bash
 ./vendor/bin/phpunit
