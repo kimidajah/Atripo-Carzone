@@ -8,7 +8,7 @@ class StoreCarRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->user() && $this->user()->isAdmin();
+        return $this->user() && $this->user()->canManageCars();
     }
 
     public function rules(): array
@@ -22,7 +22,7 @@ class StoreCarRequest extends FormRequest
             'plate_number' => ['required', 'string', 'max:20', 'unique:cars,plate_number'],
             'price' => ['required', 'numeric', 'min:0'],
             'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:2048'],
-            'status' => ['required', 'in:tersedia,dipesan,terjual'],
+            'status' => ['required', 'in:tersedia,dipesan,pending,terjual'],
         ];
     }
 

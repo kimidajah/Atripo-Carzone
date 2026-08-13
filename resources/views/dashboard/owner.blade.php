@@ -3,14 +3,14 @@
 @section('title', 'Dashboard Pemilik (Monitoring)')
 
 @section('content')
-<div class="d-flex justify-content-between align-items-center mb-4">
+<div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-3 mb-4">
     <div>
-        <h3 class="fw-bold mb-1">Dashboard Monitoring Pemilik</h3>
-        <p class="text-muted small mb-0">Pemantauan kinerja operasional dan laporan persediaan Showroom Atripo Carzone</p>
+        <h3 class="fw-bold mb-1 page-header-title">Dashboard Monitoring Pemilik</h3>
+        <p class="text-muted small mb-0 page-header-subtitle">Pemantauan kinerja operasional dan laporan persediaan Showroom Atripo Carzone</p>
     </div>
     <div>
         <span class="badge bg-dark text-warning border border-warning px-3 py-2 fs-6">
-            <i class="bi bi-eye-fill me-1"></i> Mode Pemilik (Monitoring Only)
+            <i class="bi bi-eye-fill me-1"></i> Mode Pemilik (Monitoring)
         </span>
     </div>
 </div>
@@ -52,7 +52,7 @@
             <div class="d-flex align-items-center justify-content-between">
                 <div>
                     <div class="text-muted small fw-semibold text-uppercase">Total Penjualan</div>
-                    <h2 class="fw-bold mb-0 text-primary">Rp {{ number_format($totalSalesRevenue, 0, ',', '.') }}</h2>
+                    <h2 class="fw-bold mb-0 text-primary fs-4 fs-sm-3">Rp {{ number_format($totalSalesRevenue, 0, ',', '.') }}</h2>
                     <small class="text-muted">{{ $totalSalesCount }} Transaksi Selesai</small>
                 </div>
                 <div class="stat-icon" style="background: #E3F2FD; color: #1565C0;">
@@ -111,12 +111,12 @@
                 <tbody>
                     @forelse($recentSales as $sale)
                         <tr>
-                            <td class="fw-bold text-dark">{{ $sale->invoice_number }}</td>
-                            <td>{{ $sale->sale_date->format('d/m/Y') }}</td>
+                            <td class="fw-bold text-dark font-monospace text-nowrap">{{ $sale->invoice_number }}</td>
+                            <td class="text-nowrap">{{ $sale->sale_date->format('d/m/Y') }}</td>
                             <td>{{ $sale->car->brand ?? '-' }} {{ $sale->car->model_type ?? '' }} ({{ $sale->car->plate_number ?? '' }})</td>
                             <td>{{ $sale->customer->name ?? '-' }}</td>
-                            <td class="fw-bold text-warning">{{ $sale->formatted_price }}</td>
-                            <td>
+                            <td class="fw-bold text-warning text-nowrap">{{ $sale->formatted_price }}</td>
+                            <td class="text-nowrap">
                                 <span class="badge bg-light text-dark border">{{ strtoupper($sale->payment_method) }}</span>
                             </td>
                         </tr>

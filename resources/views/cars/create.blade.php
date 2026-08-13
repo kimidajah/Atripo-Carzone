@@ -5,18 +5,18 @@
 @section('content')
 <div class="row justify-content-center">
     <div class="col-lg-10">
-        <div class="d-flex align-items-center justify-content-between mb-4">
+        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-3 mb-4">
             <div>
-                <h3 class="fw-bold mb-1">Tambah Mobil Baru</h3>
-                <p class="text-muted small mb-0">Isi formulir lengkap data kendaraan di bawah ini</p>
+                <h3 class="fw-bold mb-1 page-header-title">Tambah Mobil Baru</h3>
+                <p class="text-muted small mb-0 page-header-subtitle">Isi formulir lengkap data kendaraan di bawah ini</p>
             </div>
-            <a href="{{ route('cars.index') }}" class="btn btn-outline-gold">
+            <a href="{{ route('cars.index') }}" class="btn btn-outline-gold w-100 w-sm-auto text-center">
                 <i class="bi bi-arrow-left me-1"></i> Kembali
             </a>
         </div>
 
         <div class="card border-0 shadow-sm">
-            <div class="card-body p-4">
+            <div class="card-body p-3 p-md-4">
                 <form action="{{ route('cars.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     
@@ -90,8 +90,9 @@
                         <div class="col-md-4">
                             <label for="status" class="form-label fw-semibold">Status Stok <span class="text-danger">*</span></label>
                             <select class="form-select @error('status') is-invalid @enderror" id="status" name="status" required>
-                                <option value="tersedia" {{ old('status') == 'tersedia' ? 'selected' : '' }}>TERSDIA</option>
+                                <option value="tersedia" {{ old('status') == 'tersedia' ? 'selected' : '' }}>TERSEDIA</option>
                                 <option value="dipesan" {{ old('status') == 'dipesan' ? 'selected' : '' }}>DIPESAN</option>
+                                <option value="pending" {{ old('status') == 'pending' ? 'selected' : '' }}>PENDING</option>
                                 <option value="terjual" {{ old('status') == 'terjual' ? 'selected' : '' }}>TERJUAL</option>
                             </select>
                             @error('status')
@@ -109,8 +110,8 @@
                         </div>
                     </div>
 
-                    <div class="d-flex justify-content-end gap-2 pt-3 border-top">
-                        <a href="{{ route('cars.index') }}" class="btn btn-secondary px-4">Batal</a>
+                    <div class="d-flex flex-column flex-sm-row justify-content-end gap-2 pt-3 border-top">
+                        <a href="{{ route('cars.index') }}" class="btn btn-secondary px-4 text-center">Batal</a>
                         <button type="submit" class="btn btn-gold px-4">
                             <i class="bi bi-save me-1"></i> Simpan Data Mobil
                         </button>

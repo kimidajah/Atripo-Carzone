@@ -26,28 +26,33 @@
     @stack('styles')
 </head>
 <body>
+    <!-- Mobile Sidebar Offcanvas (Placed at top-level under body for backdrop & touch reliability) -->
+    <div class="offcanvas offcanvas-start border-0 shadow" tabindex="-1" id="mobileSidebar" aria-labelledby="mobileSidebarLabel" style="width: 290px;">
+        <div class="offcanvas-header bg-white border-bottom py-3 px-3">
+            <div class="d-flex align-items-center">
+                <img src="{{ asset('images/logo.png') }}" alt="Logo Atripo Carzone" class="me-2" style="height: 32px; width: auto; object-fit: contain;">
+                <h5 class="offcanvas-title text-dark fw-extrabold mb-0" id="mobileSidebarLabel">
+                    ATRIPO <span class="text-warning">CARZONE</span>
+                </h5>
+            </div>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Tutup Menu"></button>
+        </div>
+        <div class="offcanvas-body p-0 bg-white">
+            @include('layouts.sidebar')
+        </div>
+    </div>
+
     <div class="d-flex min-vh-100">
         <!-- Desktop Sidebar -->
         <div class="d-none d-md-block flex-shrink-0">
             @include('layouts.sidebar')
         </div>
 
-        <!-- Mobile Sidebar Offcanvas -->
-        <div class="offcanvas offcanvas-start bg-white text-dark p-0" tabindex="-1" id="mobileSidebar" aria-labelledby="mobileSidebarLabel">
-            <div class="offcanvas-header border-bottom">
-                <h5 class="offcanvas-title text-warning fw-bold mb-0" id="mobileSidebarLabel">ATRIPO <span class="text-dark">CARZONE</span></h5>
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body p-0">
-                @include('layouts.sidebar')
-            </div>
-        </div>
-
         <!-- Main Content Area -->
         <div class="flex-grow-1 d-flex flex-column main-content min-vh-100 bg-light">
             @include('layouts.topbar')
 
-            <main class="container-fluid p-4 flex-grow-1">
+            <main class="container-fluid px-3 py-3 p-md-4 flex-grow-1">
                 <!-- Flash Messages -->
                 @if(session('success'))
                     <div class="alert alert-success alert-dismissible fade show border-0 shadow-sm mb-4" role="alert">
@@ -77,14 +82,14 @@
             </main>
 
             <!-- Footer -->
-            <footer class="bg-white border-top py-3 text-center text-muted fs-7 d-print-none">
-                <div class="container-fluid">
-                    <div class="row align-items-center">
-                        <div class="col-md-6 text-md-start mb-2 mb-md-0">
-                            &copy; {{ date('Y') }} <strong class="text-dark">ATRIPO CARZONE</strong> - Showroom Mobil Bekas Cileunyi, Bandung.
+            <footer class="bg-white border-top py-3 text-muted fs-7 d-print-none mt-auto">
+                <div class="container-fluid px-3 px-md-4">
+                    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2 text-center text-sm-start">
+                        <div>
+                            &copy; {{ date('Y') }} <strong class="text-dark fw-bold">ATRIPO CARZONE</strong>. Hak Cipta Dilindungi.
                         </div>
-                        <div class="col-md-6 text-md-end">
-                            <span class="badge bg-light text-dark border">Laravel 12 + Bootstrap 5.3.3</span>
+                        <div class="small text-muted">
+                            <i class="bi bi-geo-alt-fill text-warning me-1"></i> Showroom Mobil Bekas &bull; Cileunyi, Bandung
                         </div>
                     </div>
                 </div>
@@ -92,8 +97,32 @@
         </div>
     </div>
 
-    <!-- Bootstrap 5.3.3 JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap 5.3.3 JS Bundle (Local asset with CDN fallback) -->
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <script>
+        if (typeof bootstrap === 'undefined') {
+            document.write('<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/bootstrap.bundle.min.js"><\/script>');
+        }
+    </script>
+
+    <!-- Dedicated Mobile Sidebar Controller -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebarEl = document.getElementById('mobileSidebar');
+
+            // Close offcanvas when clicking nav links inside mobile sidebar
+            if (sidebarEl) {
+                sidebarEl.querySelectorAll('a.nav-link').forEach(function (link) {
+                    link.addEventListener('click', function () {
+                        if (window.bootstrap && window.bootstrap.Offcanvas) {
+                            const inst = window.bootstrap.Offcanvas.getInstance(sidebarEl);
+                            if (inst) inst.hide();
+                        }
+                    });
+                });
+            }
+        });
+    </script>
     @stack('scripts')
 </body>
 </html>

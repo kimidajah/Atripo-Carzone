@@ -34,5 +34,27 @@ class UserSeeder extends Seeder
                 'phone' => '081987654321',
             ]
         );
+
+        User::updateOrCreate(
+            ['username' => 'marketing'],
+            [
+                'name' => 'Staff Marketing',
+                'email' => 'marketing@atripo.com',
+                'password' => Hash::make('m4rk3t1ng'),
+                'role' => 'marketing',
+                'phone' => '081345678901',
+            ]
+        );
+
+        User::updateOrCreate(
+            ['username' => 'pengelola'],
+            [
+                'name' => 'Pengelola Mobil',
+                'email' => 'pengelola@atripo.com',
+                'password' => Hash::make('p3ng3lol4'),
+                'role' => 'pengelola',
+                'phone' => '081456789012',
+            ]
+        );
     }
 }

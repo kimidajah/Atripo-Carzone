@@ -5,22 +5,22 @@
 @section('content')
 <div class="row justify-content-center">
     <div class="col-lg-8">
-        <div class="d-flex align-items-center justify-content-between mb-4">
+        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-2 mb-4">
             <div>
-                <h3 class="fw-bold mb-1">Profil Pengguna</h3>
-                <p class="text-muted small mb-0">Kelola data profil dan keamanan kata sandi akun Anda</p>
+                <h3 class="fw-bold mb-1 page-header-title">Profil Pengguna</h3>
+                <p class="text-muted small mb-0 page-header-subtitle">Kelola data profil dan keamanan kata sandi akun Anda</p>
             </div>
         </div>
 
         <div class="card border-0 shadow-sm mb-4">
-            <div class="card-body p-4">
-                <div class="d-flex align-items-center gap-3 mb-4 pb-3 border-bottom">
-                    <div class="bg-warning text-dark rounded-circle d-flex align-items-center justify-content-center fw-bold" style="width: 70px; height: 70px; font-size: 1.8rem; border: 3px solid #D4AF37;">
+            <div class="card-body p-3 p-md-4">
+                <div class="d-flex flex-column flex-sm-row align-items-center gap-3 mb-4 pb-3 border-bottom text-center text-sm-start">
+                    <div class="bg-warning text-dark rounded-circle d-flex align-items-center justify-content-center fw-bold shadow-sm" style="width: 70px; height: 70px; font-size: 1.8rem; border: 3px solid #FAA87D;">
                         {{ strtoupper(substr($user->name, 0, 1)) }}
                     </div>
                     <div>
-                        <h4 class="fw-bold mb-1">{{ $user->name }}</h4>
-                        <div class="d-flex align-items-center gap-2">
+                        <h4 class="fw-bold mb-1 text-dark">{{ $user->name }}</h4>
+                        <div class="d-flex flex-wrap justify-content-center justify-content-sm-start align-items-center gap-2">
                             <span class="badge {{ $user->isAdmin() ? 'badge-role-admin' : 'badge-role-owner' }} px-3 py-1">
                                 {{ strtoupper($user->role) }}
                             </span>
@@ -87,7 +87,7 @@
                     </div>
 
                     <div class="d-flex justify-content-end pt-3 border-top">
-                        <button type="submit" class="btn btn-gold px-4">
+                        <button type="submit" class="btn btn-gold px-4 w-100 w-sm-auto">
                             <i class="bi bi-save me-1"></i> Perbarui Profil
                         </button>
                     </div>

@@ -168,7 +168,7 @@
             filter: blur(3px);
         }
 
-        /* ULTRA-REALISTIC FROSTED GLASS LOGIN CARD (KACA BURAM SEHINGGA MOBIL TERLIHAT) */
+        /* ULTRA-REALISTIC FROSTED GLASS LOGIN CARD */
         .login-card {
             background: rgba(255, 255, 255, 0.28) !important;
             backdrop-filter: blur(6px) saturate(160%);
@@ -342,6 +342,26 @@
         .btn-gold:active {
             transform: translateY(0) scale(0.98);
         }
+
+        .btn-back-home {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(250, 168, 125, 0.6);
+            color: #E07638;
+            font-weight: 600;
+            border-radius: 50rem;
+            padding: 0.4rem 1rem;
+            font-size: 0.85rem;
+            transition: all 0.25s ease;
+            text-decoration: none;
+        }
+
+        .btn-back-home:hover {
+            background: #E07638;
+            color: #FFFFFF;
+            box-shadow: 0 4px 12px rgba(224, 118, 56, 0.3);
+            transform: translateX(-3px);
+        }
     </style>
 </head>
 <body>
@@ -359,19 +379,19 @@
         <span>Unit Armada Siap Jual</span>
     </div>
 
-    <!-- Background Animated Road & Moving Cars (Visible through Frosted Glass) -->
+    <!-- Background Animated Road & Moving Cars -->
     <div class="road-container">
         <div class="road-line"></div>
         <div class="road-line road-line-lower"></div>
         
-        <!-- Moving Car 1: White Pickup Truck (User Image 1) -->
+        <!-- Moving Car 1: White Pickup Truck -->
         <div class="moving-car car-truck">
             <div class="headlight-beam-truck"></div>
             <div class="speed-trail"></div>
             <img src="{{ asset('images/pickup-truck.png') }}" alt="Pickup Truck Moving" class="car-img">
         </div>
 
-        <!-- Moving Car 2: Yellow Daihatsu Rocky SUV (User Image 2 - Staggered Loop) -->
+        <!-- Moving Car 2: Yellow Daihatsu Rocky SUV -->
         <div class="moving-car car-suv">
             <div class="headlight-beam-truck"></div>
             <div class="speed-trail"></div>
@@ -380,6 +400,13 @@
     </div>
 
     <div class="container py-4">
+        <!-- Back to Welcome Page Top Button -->
+        <div class="d-flex justify-content-between align-items-center max-w-960 mx-auto mb-3" style="max-width: 960px; position: relative; z-index: 20;">
+            <a href="{{ route('welcome') }}" class="btn-back-home shadow-sm d-inline-flex align-items-center">
+                <i class="bi bi-arrow-left me-2"></i> Kembali ke Welcome Page / Katalog Mobil
+            </a>
+        </div>
+
         <!-- Frosted Glass Login Card -->
         <div class="card login-card mx-auto">
             <div class="row g-0">
@@ -470,9 +497,13 @@
                         </div>
 
                         <div class="animate-step-4">
-                            <button type="submit" class="btn btn-gold w-100 py-2.5 rounded-3 fw-bold text-uppercase tracking-wider">
+                            <button type="submit" class="btn btn-gold w-100 py-2.5 rounded-3 fw-bold text-uppercase tracking-wider mb-3">
                                 <i class="bi bi-box-arrow-in-right me-2"></i> Login Masuk
                             </button>
+
+                            <a href="{{ route('welcome') }}" class="btn btn-outline-secondary w-100 py-2 rounded-3 text-dark fw-semibold small">
+                                <i class="bi bi-house me-1"></i> Kembali ke Welcome Page
+                            </a>
                         </div>
                     </form>
 

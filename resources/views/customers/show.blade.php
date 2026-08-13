@@ -5,26 +5,26 @@
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
     <div>
-        <h3 class="fw-bold mb-1">Detail Pelanggan</h3>
-        <p class="text-muted small mb-0">Informasi identitas dan riwayat pembelian kendaraan</p>
+        <h3 class="fw-bold mb-1 page-header-title">Detail Pelanggan</h3>
+        <p class="text-muted small mb-0 page-header-subtitle">Informasi identitas, berkas dokumen kredit, dan riwayat transaksi kendaraan</p>
     </div>
     <div class="d-flex gap-2">
         <a href="{{ route('customers.index') }}" class="btn btn-outline-gold">
             <i class="bi bi-arrow-left me-1"></i> Kembali
         </a>
-        @if(Auth::user()->isAdmin())
+        @if(Auth::user()->canManageCustomers())
             <a href="{{ route('customers.edit', $customer) }}" class="btn btn-gold">
-                <i class="bi bi-pencil me-1"></i> Edit Data
+                <i class="bi bi-pencil me-1"></i> Edit Data & Berkas
             </a>
         @endif
     </div>
 </div>
 
 <div class="row g-4">
-    <!-- Left Column: Customer Profile -->
-    <div class="col-lg-4">
-        <div class="card border-0 shadow-sm text-center p-4">
-            <div class="bg-warning text-dark rounded-circle d-flex align-items-center justify-content-center fw-bold mx-auto mb-3" style="width: 80px; height: 80px; font-size: 2.2rem; border: 3px solid #D4AF37;">
+    <!-- Left Column: Customer Profile & Credit Documents -->
+    <div class="col-lg-5">
+        <div class="card border-0 shadow-sm text-center p-4 mb-4">
+            <div class="bg-warning text-dark rounded-circle d-flex align-items-center justify-content-center fw-bold mx-auto mb-3" style="width: 75px; height: 75px; font-size: 2rem; border: 3px solid #D4AF37;">
                 {{ strtoupper(substr($customer->name, 0, 1)) }}
             </div>
             <h4 class="fw-bold text-dark mb-1">{{ $customer->name }}</h4>
@@ -45,10 +45,72 @@
                 </div>
             </div>
         </div>
+
+        <!-- Credit Documents Card -->
+        <div class="card border-0 shadow-sm">
+            <div class="card-header bg-white py-3 border-bottom d-flex justify-content-between align-items-center">
+                <h6 class="fw-bold mb-0 text-dark">
+                    <i class="bi bi-folder-check me-2 text-info"></i>Berkas & Dokumen Kredit
+                </h6>
+                @if($customer->has_credit_documents)
+                    <span class="badge bg-success">Lengkap</span>
+                @else
+                    <span class="badge bg-secondary">Belum Upload</span>
+                @endif
+            </div>
+            <div class="card-body p-3">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item px-0 d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="fw-semibold small">NIK KTP</div>
+                            <div class="text-muted small font-monospace">{{ $customer->nik ?? '-' }}</div>
+                        </div>
+                        @if($customer->ktp_url)
+                            <a href="{{ $customer->ktp_url }}" target="_blank" class="btn btn-sm btn-outline-primary"><i class="bi bi-eye"></i> Lihat KTP</a>
+                        @else
+                            <span class="text-muted small">-</span>
+                        @endif
+                    </li>
+                    <li class="list-group-item px-0 d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="fw-semibold small">Nomor Kartu Keluarga (KK)</div>
+                            <div class="text-muted small font-monospace">{{ $customer->kk_number ?? '-' }}</div>
+                        </div>
+                        @if($customer->kk_url)
+                            <a href="{{ $customer->kk_url }}" target="_blank" class="btn btn-sm btn-outline-primary"><i class="bi bi-eye"></i> Lihat KK</a>
+                        @else
+                            <span class="text-muted small">-</span>
+                        @endif
+                    </li>
+                    <li class="list-group-item px-0 d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="fw-semibold small">Slip Gaji / Penghasilan</div>
+                            <div class="text-muted small">Bukti penghasilan</div>
+                        </div>
+                        @if($customer->salary_slip_url)
+                            <a href="{{ $customer->salary_slip_url }}" target="_blank" class="btn btn-sm btn-outline-primary"><i class="bi bi-eye"></i> Lihat Slip Gaji</a>
+                        @else
+                            <span class="text-muted small">-</span>
+                        @endif
+                    </li>
+                    <li class="list-group-item px-0 d-flex justify-content-between align-items-center border-0">
+                        <div>
+                            <div class="fw-semibold small">Nomor NPWP</div>
+                            <div class="text-muted small font-monospace">{{ $customer->npwp_number ?? '-' }}</div>
+                        </div>
+                        @if($customer->npwp_url)
+                            <a href="{{ $customer->npwp_url }}" target="_blank" class="btn btn-sm btn-outline-primary"><i class="bi bi-eye"></i> Lihat NPWP</a>
+                        @else
+                            <span class="text-muted small">-</span>
+                        @endif
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 
     <!-- Right Column: Purchase History -->
-    <div class="col-lg-8">
+    <div class="col-lg-7">
         <div class="card border-0 shadow-sm h-100">
             <div class="card-header bg-white py-3 border-0">
                 <h5 class="fw-bold mb-0">Riwayat Pembelian Kendaraan</h5>
@@ -61,18 +123,28 @@
                                 <th>No. Invoice</th>
                                 <th>Tanggal</th>
                                 <th>Mobil Pembelian</th>
-                                <th>Harga Penjualan</th>
-                                <th>Metode</th>
+                                <th>Harga Deal</th>
+                                <th>Skema Bayar</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse($customer->sales as $sale)
                                 <tr>
-                                    <td class="fw-bold text-dark">{{ $sale->invoice_number }}</td>
+                                    <td class="fw-bold text-dark">
+                                        <a href="{{ route('sales.show', $sale) }}" class="text-decoration-none text-gold">
+                                            {{ $sale->invoice_number }}
+                                        </a>
+                                    </td>
                                     <td>{{ $sale->sale_date->format('d/m/Y') }}</td>
                                     <td>{{ $sale->car->brand ?? '-' }} {{ $sale->car->model_type ?? '' }} ({{ $sale->car->plate_number ?? '' }})</td>
                                     <td class="fw-bold text-warning">{{ $sale->formatted_price }}</td>
-                                    <td><span class="badge bg-light text-dark border">{{ strtoupper($sale->payment_method) }}</span></td>
+                                    <td>
+                                        @if($sale->payment_type === 'credit')
+                                            <span class="badge bg-warning text-dark border"><i class="bi bi-clock-history me-1"></i>KREDIT ({{ $sale->tenor_months }} bln)</span>
+                                        @else
+                                            <span class="badge bg-success border"><i class="bi bi-cash-stack me-1"></i>CASH / LUNAS</span>
+                                        @endif
+                                    </td>
                                 </tr>
                             @empty
                                 <tr>

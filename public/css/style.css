@@ -272,6 +272,126 @@ body {
     font-size: 0.925rem;
 }
 
+/* Offcanvas Mobile Sidebar Overrides */
+.offcanvas .sidebar {
+    width: 100% !important;
+    min-height: auto !important;
+    border-right: none !important;
+    box-shadow: none !important;
+    padding: 1rem !important;
+}
+
+/* Button Sidebar Toggle */
+.btn-sidebar-toggle {
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(250, 168, 125, 0.4);
+    cursor: pointer !important;
+    position: relative;
+    z-index: 1000;
+    pointer-events: auto !important;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn-sidebar-toggle * {
+    pointer-events: none !important;
+}
+
+.btn-sidebar-toggle:hover, .btn-sidebar-toggle:focus, .btn-sidebar-toggle:active {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(224, 118, 56, 0.45);
+}
+
+/* Handphone & Tablet Mobile Responsive Styles (< 768px) */
+@media (max-width: 767.98px) {
+    .topbar {
+        padding: 0.75rem 1rem !important;
+    }
+
+    .main-content {
+        width: 100%;
+    }
+
+    /* Page Header Mobile Layout */
+    .page-header-title {
+        font-size: 1.35rem !important;
+    }
+
+    .page-header-subtitle {
+        font-size: 0.825rem !important;
+        line-height: 1.4;
+    }
+
+    /* Card & Stat Adjustments */
+    .card-stat {
+        padding: 1rem !important;
+    }
+
+    .stat-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 1.2rem;
+    }
+
+    /* Form Controls & Inputs */
+    .form-label {
+        font-size: 0.85rem;
+    }
+
+    /* Table Mobile Optimizations */
+    .table-responsive {
+        border-radius: 8px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .table th {
+        font-size: 0.775rem;
+        padding: 0.6rem 0.75rem;
+        white-space: nowrap;
+    }
+
+    .table td {
+        font-size: 0.85rem;
+        padding: 0.65rem 0.75rem;
+    }
+}
+
+/* Handphone Screen Optimizations (< 576px) */
+@media (max-width: 575.98px) {
+    h3, .h3 {
+        font-size: 1.25rem !important;
+    }
+
+    h4, .h4 {
+        font-size: 1.1rem !important;
+    }
+
+    h5, .h5 {
+        font-size: 1rem !important;
+    }
+
+    /* Ensure flex headers wrap cleanly without overflowing */
+    .mobile-stack-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 0.75rem !important;
+    }
+
+    .mobile-stack-header .btn-group,
+    .mobile-stack-header .btn-action-group {
+        width: 100% !important;
+    }
+
+    .mobile-stack-header .btn {
+        width: 100%;
+    }
+
+    /* Full width buttons on small forms */
+    .mobile-full-btn {
+        width: 100% !important;
+    }
+}
+
 /* Print CSS */
 @media print {
     .sidebar, .topbar, .btn-print, .filter-card, .pagination, .action-column {

@@ -15,6 +15,7 @@ class InventoryController extends Controller
         $totalCars = Car::count();
         $availableCount = Car::where('status', 'tersedia')->count();
         $reservedCount = Car::where('status', 'dipesan')->count();
+        $pendingCount = Car::where('status', 'pending')->count();
         $soldCount = Car::where('status', 'terjual')->count();
 
         // Search Filter
@@ -35,7 +36,7 @@ class InventoryController extends Controller
         $cars = $query->latest()->paginate(12)->withQueryString();
 
         return view('inventory.index', compact(
-            'cars', 'totalCars', 'availableCount', 'reservedCount', 'soldCount'
+            'cars', 'totalCars', 'availableCount', 'reservedCount', 'pendingCount', 'soldCount'
         ));
     }
 }

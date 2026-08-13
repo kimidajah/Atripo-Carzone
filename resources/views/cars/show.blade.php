@@ -3,17 +3,17 @@
 @section('title', 'Detail Mobil - ' . $car->brand . ' ' . $car->model_type)
 
 @section('content')
-<div class="d-flex justify-content-between align-items-center mb-4">
+<div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-3 mb-4">
     <div>
-        <h3 class="fw-bold mb-1">Detail Kendaraan</h3>
-        <p class="text-muted small mb-0">Informasi spesifikasi lengkap unit kendaraan Showroom Atripo Carzone</p>
+        <h3 class="fw-bold mb-1 page-header-title">Detail Kendaraan</h3>
+        <p class="text-muted small mb-0 page-header-subtitle">Informasi spesifikasi lengkap unit kendaraan Showroom Atripo Carzone</p>
     </div>
-    <div class="d-flex gap-2">
-        <a href="{{ route('cars.index') }}" class="btn btn-outline-gold">
+    <div class="d-flex flex-wrap gap-2 w-100 w-sm-auto">
+        <a href="{{ route('cars.index') }}" class="btn btn-outline-gold flex-grow-1 flex-sm-grow-0 text-center">
             <i class="bi bi-arrow-left me-1"></i> Kembali ke List
         </a>
-        @if(Auth::user()->isAdmin())
-            <a href="{{ route('cars.edit', $car) }}" class="btn btn-gold">
+        @if(Auth::user()->canManageCars())
+            <a href="{{ route('cars.edit', $car) }}" class="btn btn-gold flex-grow-1 flex-sm-grow-0 text-center">
                 <i class="bi bi-pencil me-1"></i> Edit Mobil
             </a>
         @endif
@@ -25,7 +25,7 @@
     <div class="col-lg-6">
         <div class="card border-0 shadow-sm overflow-hidden h-100">
             @if($car->image && Storage::disk('public')->exists($car->image))
-                <img src="{{ asset('uploads/' . $car->image) }}" alt="{{ $car->brand }}" class="img-fluid w-100 h-100" style="object-fit: cover; min-height: 340px;">
+                <img src="{{ asset('uploads/' . $car->image) }}" alt="{{ $car->brand }}" class="img-fluid w-100 h-100" style="object-fit: cover; min-height: 280px;">
             @else
                 <div class="bg-dark text-white p-5 d-flex flex-column align-items-center justify-content-center h-100 min-vh-40 text-center">
                     <i class="bi bi-car-front display-1 text-warning mb-3"></i>
@@ -39,17 +39,19 @@
     <!-- Right Column: Specs & Status Details -->
     <div class="col-lg-6">
         <div class="card border-0 shadow-sm h-100">
-            <div class="card-body p-4">
-                <div class="d-flex justify-content-between align-items-start mb-3">
+            <div class="card-body p-3 p-md-4">
+                <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start gap-2 mb-3">
                     <div>
                         <span class="badge bg-dark text-warning border border-warning px-3 py-1 mb-2">{{ strtoupper($car->brand) }}</span>
-                        <h2 class="fw-extrabold text-dark mb-0">{{ $car->brand }} {{ $car->model_type }}</h2>
+                        <h2 class="fw-extrabold text-dark mb-0 fs-3 fs-sm-2">{{ $car->brand }} {{ $car->model_type }}</h2>
                     </div>
                     <div>
                         @if($car->status === 'tersedia')
-                            <span class="badge badge-available px-3 py-2 fs-6">TERSDIA</span>
+                            <span class="badge badge-available px-3 py-2 fs-6">TERSEDIA</span>
                         @elseif($car->status === 'dipesan')
                             <span class="badge badge-reserved px-3 py-2 fs-6">DIPESAN</span>
+                        @elseif($car->status === 'pending')
+                            <span class="badge bg-secondary px-3 py-2 fs-6">PENDING</span>
                         @else
                             <span class="badge badge-sold px-3 py-2 fs-6">TERJUAL</span>
                         @endif

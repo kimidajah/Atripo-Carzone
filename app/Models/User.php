@@ -61,6 +61,31 @@ class User extends Authenticatable
         return $this->role === 'owner';
     }
 
+    public function isMarketing(): bool
+    {
+        return $this->role === 'marketing';
+    }
+
+    public function isPengelola(): bool
+    {
+        return $this->role === 'pengelola';
+    }
+
+    public function canManageCars(): bool
+    {
+        return in_array($this->role, ['admin', 'pengelola']);
+    }
+
+    public function canManageSales(): bool
+    {
+        return in_array($this->role, ['admin', 'marketing']);
+    }
+
+    public function canManageCustomers(): bool
+    {
+        return in_array($this->role, ['admin', 'marketing']);
+    }
+
     public function sales(): HasMany
     {
         return $this->hasMany(Sale::class);

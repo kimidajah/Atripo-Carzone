@@ -31,6 +31,41 @@ class ReportController extends Controller
         return view('reports.sales', compact('sales', 'startDate', 'endDate', 'totalTransactions', 'totalRevenue'));
     }
 
+    public function management(Request $request)
+    {
+        $startDate = $request->input('start_date', now()->startOfMonth()->toDateString());
+        $endDate = $request->input('end_date', now()->endOfMonth()->toDateString());
+
+        // Mobil Masuk: Units added into system during the selected date range
+        $carsIncoming = Car::whereDate('created_at', '>=', $startDate)
+            ->whereDate('created_at', '<=', $endDate)
+            ->latest()
+            ->get();
+
+        // Mobil Keluar: Units sold during the selected date range
+        $salesOutgoing = Sale::with(['car', 'customer', 'user'])
+            ->whereDate('sale_date', '>=', $startDate)
+            ->whereDate('sale_date', '<=', $endDate)
+            ->latest('sale_date')
+            ->get();
+
+        $totalIncoming = $carsIncoming->count();
+        $totalOutgoing = $salesOutgoing->count();
+        $currentAvailable = Car::where('status', 'tersedia')->count();
+
+        if ($request->has('print') || $request->has('pdf')) {
+            return view('reports.management_pdf', compact(
+                'carsIncoming', 'salesOutgoing', 'startDate', 'endDate',
+                'totalIncoming', 'totalOutgoing', 'currentAvailable'
+            ));
+        }
+
+        return view('reports.management', compact(
+            'carsIncoming', 'salesOutgoing', 'startDate', 'endDate',
+            'totalIncoming', 'totalOutgoing', 'currentAvailable'
+        ));
+    }
+
     public function inventory(Request $request)
     {
         $status = $request->input('status', 'all');

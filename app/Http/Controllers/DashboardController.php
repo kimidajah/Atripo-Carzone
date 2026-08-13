@@ -54,8 +54,8 @@ class DashboardController extends Controller
             $chartTransactions[] = (int) $data->total_transactions;
         }
 
-        if ($user->isAdmin()) {
-            return view('dashboard.admin', compact(
+        if ($user->isOwner()) {
+            return view('dashboard.owner', compact(
                 'totalCars', 'availableCars', 'reservedCars', 'soldCars',
                 'totalSalesRevenue', 'totalSalesCount',
                 'recentCars', 'recentSales',
@@ -63,7 +63,7 @@ class DashboardController extends Controller
             ));
         }
 
-        return view('dashboard.owner', compact(
+        return view('dashboard.admin', compact(
             'totalCars', 'availableCars', 'reservedCars', 'soldCars',
             'totalSalesRevenue', 'totalSalesCount',
             'recentCars', 'recentSales',

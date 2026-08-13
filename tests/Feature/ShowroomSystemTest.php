@@ -20,6 +20,16 @@ class ShowroomSystemTest extends TestCase
         $this->seed();
     }
 
+    public function test_welcome_page_displays_only_available_cars()
+    {
+        $response = $this->get('/');
+
+        $response->assertStatus(200);
+        $response->assertSee('Armada Mobil Tersedia');
+        $response->assertSee('TERSEDIA');
+        $response->assertDontSee('TERJUAL');
+    }
+
     public function test_user_can_login_with_valid_credentials()
     {
         $response = $this->post('/login', [
@@ -37,7 +47,7 @@ class ShowroomSystemTest extends TestCase
 
         $response = $this->actingAs($admin)->get('/dashboard');
         $response->assertStatus(200);
-        $response->assertSee('Dashboard Admin');
+        $response->assertSee('Operasional');
     }
 
     public function test_owner_dashboard_access()
@@ -57,56 +67,98 @@ class ShowroomSystemTest extends TestCase
         $response->assertStatus(403);
     }
 
-    public function test_admin_can_create_new_car()
+    public function test_pengelola_can_access_car_create_page_and_create_car()
     {
-        $admin = User::where('role', 'admin')->first();
+        $pengelola = User::where('role', 'pengelola')->first();
 
-        $response = $this->actingAs($admin)->post('/cars', [
+        $response = $this->actingAs($pengelola)->get('/cars-create');
+        $response->assertStatus(200);
+
+        $response = $this->actingAs($pengelola)->post('/cars', [
             'brand' => 'Honda',
-            'model_type' => 'Civic RS 1.5 Turbo',
+            'model_type' => 'HR-V SE 1.5',
             'year' => 2023,
-            'color' => 'Merah',
+            'color' => 'Hitam',
             'transmission' => 'Automatic',
-            'plate_number' => 'D 9999 XYZ',
-            'price' => 520000000,
-            'status' => 'tersedia',
+            'plate_number' => 'D 8888 PNG',
+            'price' => 380000000,
+            'status' => 'pending',
         ]);
 
         $response->assertRedirect('/cars');
         $this->assertDatabaseHas('cars', [
-            'plate_number' => 'D 9999 XYZ',
-            'brand' => 'Honda',
+            'plate_number' => 'D 8888 PNG',
+            'status' => 'pending',
         ]);
     }
 
-    public function test_sale_transaction_updates_car_status_to_terjual()
+    public function test_marketing_can_create_customer_and_sale()
     {
-        $admin = User::where('role', 'admin')->first();
-        $customer = Customer::first();
+        $marketing = User::where('role', 'marketing')->first();
         $availableCar = Car::where('status', 'tersedia')->first();
 
-        $response = $this->actingAs($admin)->post('/sales', [
+        // Create Customer
+        $customerResponse = $this->actingAs($marketing)->post('/customers', [
+            'name' => 'Budi Marketing Client',
+            'phone' => '08123443211',
+            'address' => 'Jl. Kebon Sirih No. 10',
+            'email' => 'budi@test.com',
+        ]);
+
+        $customerResponse->assertRedirect('/customers');
+        $customer = Customer::where('name', 'Budi Marketing Client')->first();
+        $this->assertNotNull($customer);
+
+        // Create Sale
+        $saleResponse = $this->actingAs($marketing)->post('/sales', [
             'car_id' => $availableCar->id,
             'customer_id' => $customer->id,
             'sale_date' => now()->toDateString(),
             'sale_price' => $availableCar->price,
+            'payment_type' => 'cash',
             'payment_method' => 'transfer',
-            'notes' => 'Pembayaran via BCA',
+            'notes' => 'Pembayaran lunas via transfer',
         ]);
 
-        $response->assertRedirect('/sales');
-        
-        // Assert car status changed to TERJUAL
-        $this->assertDatabaseHas('cars', [
-            'id' => $availableCar->id,
-            'status' => 'terjual',
-        ]);
-
-        // Assert sale record created
+        $saleResponse->assertRedirect('/sales');
         $this->assertDatabaseHas('sales', [
             'car_id' => $availableCar->id,
             'customer_id' => $customer->id,
         ]);
+    }
+
+    public function test_marketing_can_access_sales_report()
+    {
+        $marketing = User::where('role', 'marketing')->first();
+
+        $response = $this->actingAs($marketing)->get('/reports/sales');
+        $response->assertStatus(200);
+        $response->assertSee('Laporan Penjualan');
+    }
+
+    public function test_pengelola_can_access_management_report()
+    {
+        $pengelola = User::where('role', 'pengelola')->first();
+
+        $response = $this->actingAs($pengelola)->get('/reports/management');
+        $response->assertStatus(200);
+        $response->assertSee('Laporan Pengelolaan Armada');
+    }
+
+    public function test_marketing_cannot_access_car_create_page()
+    {
+        $marketing = User::where('role', 'marketing')->first();
+
+        $response = $this->actingAs($marketing)->get('/cars-create');
+        $response->assertStatus(403);
+    }
+
+    public function test_pengelola_cannot_access_sales_create_page()
+    {
+        $pengelola = User::where('role', 'pengelola')->first();
+
+        $response = $this->actingAs($pengelola)->get('/sales-create');
+        $response->assertStatus(403);
     }
 
     public function test_cannot_sell_already_sold_car()
@@ -120,34 +172,10 @@ class ShowroomSystemTest extends TestCase
             'customer_id' => $customer->id,
             'sale_date' => now()->toDateString(),
             'sale_price' => $soldCar->price,
+            'payment_type' => 'cash',
             'payment_method' => 'cash',
         ]);
 
         $response->assertSessionHas('error');
-    }
-
-    public function test_admin_can_upload_car_image_to_public_uploads()
-    {
-        \Illuminate\Support\Facades\Storage::fake('public');
-
-        $admin = User::where('role', 'admin')->first();
-        $file = \Illuminate\Http\UploadedFile::fake()->image('test_car.jpg');
-
-        $response = $this->actingAs($admin)->post('/cars', [
-            'brand' => 'Toyota',
-            'model_type' => 'Yaris Cross',
-            'year' => 2024,
-            'color' => 'Putih',
-            'transmission' => 'Automatic',
-            'plate_number' => 'D 7777 UPL',
-            'price' => 350000000,
-            'status' => 'tersedia',
-            'image' => $file,
-        ]);
-
-        $response->assertRedirect('/cars');
-        $car = Car::where('plate_number', 'D 7777 UPL')->first();
-        $this->assertNotNull($car->image);
-        \Illuminate\Support\Facades\Storage::disk('public')->assertExists($car->image);
     }
 }

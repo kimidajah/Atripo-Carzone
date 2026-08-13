@@ -6,6 +6,7 @@ use App\Http\Requests\StoreCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CustomerController extends Controller
 {
@@ -17,7 +18,10 @@ class CustomerController extends Controller
             $search = $request->search;
             $query->where('name', 'LIKE', "%{$search}%")
                   ->orWhere('phone', 'LIKE', "%{$search}%")
-                  ->orWhere('email', 'LIKE', "%{$search}%");
+                  ->orWhere('email', 'LIKE', "%{$search}%")
+                  ->orWhere('nik', 'LIKE', "%{$search}%")
+                  ->orWhere('kk_number', 'LIKE', "%{$search}%")
+                  ->orWhere('npwp_number', 'LIKE', "%{$search}%");
         }
 
         $customers = $query->latest()->paginate(10)->withQueryString();
@@ -32,7 +36,16 @@ class CustomerController extends Controller
 
     public function store(StoreCustomerRequest $request)
     {
-        $customer = Customer::create($request->validated());
+        $data = $request->validated();
+
+        $documentFields = ['ktp_file', 'kk_file', 'salary_slip_file', 'npwp_file'];
+        foreach ($documentFields as $field) {
+            if ($request->hasFile($field)) {
+                $data[$field] = $request->file($field)->store('customers/documents', 'public');
+            }
+        }
+
+        $customer = Customer::create($data);
 
         return redirect()->route('customers.index')
             ->with('success', 'Data pelanggan ' . $customer->name . ' berhasil ditambahkan.');
@@ -51,7 +64,19 @@ class CustomerController extends Controller
 
     public function update(UpdateCustomerRequest $request, Customer $customer)
     {
-        $customer->update($request->validated());
+        $data = $request->validated();
+
+        $documentFields = ['ktp_file', 'kk_file', 'salary_slip_file', 'npwp_file'];
+        foreach ($documentFields as $field) {
+            if ($request->hasFile($field)) {
+                if ($customer->$field && Storage::disk('public')->exists($customer->$field)) {
+                    Storage::disk('public')->delete($customer->$field);
+                }
+                $data[$field] = $request->file($field)->store('customers/documents', 'public');
+            }
+        }
+
+        $customer->update($data);
 
         return redirect()->route('customers.index')
             ->with('success', 'Data pelanggan ' . $customer->name . ' berhasil diperbarui.');
@@ -61,6 +86,13 @@ class CustomerController extends Controller
     {
         if ($customer->sales()->exists()) {
             return back()->with('error', 'Pelanggan tidak dapat dihapus karena memiliki riwayat transaksi penjualan.');
+        }
+
+        $documentFields = ['ktp_file', 'kk_file', 'salary_slip_file', 'npwp_file'];
+        foreach ($documentFields as $field) {
+            if ($customer->$field && Storage::disk('public')->exists($customer->$field)) {
+                Storage::disk('public')->delete($customer->$field);
+            }
         }
 
         $name = $customer->name;

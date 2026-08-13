@@ -9,7 +9,7 @@ class UpdateCarRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->user() && $this->user()->isAdmin();
+        return $this->user() && $this->user()->canManageCars();
     }
 
     public function rules(): array
@@ -25,7 +25,7 @@ class UpdateCarRequest extends FormRequest
             'plate_number' => ['required', 'string', 'max:20', Rule::unique('cars', 'plate_number')->ignore($carId)],
             'price' => ['required', 'numeric', 'min:0'],
             'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:2048'],
-            'status' => ['required', 'in:tersedia,dipesan,terjual'],
+            'status' => ['required', 'in:tersedia,dipesan,pending,terjual'],
         ];
     }
 
