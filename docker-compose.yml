@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: atripo_carzone_app
+    container_name: mobilq_app
     restart: unless-stopped
     tty: true
     environment:
@@ -27,7 +27,7 @@ services:
 
   db:
     image: mysql:8.0
-    container_name: atripo_carzone_db
+    container_name: mobilq_db
     restart: unless-stopped
     tty: true
     ports:
@@ -43,7 +43,7 @@ services:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: atripo_carzone_phpmyadmin
+    container_name: mobilq_phpmyadmin
     restart: unless-stopped
     ports:
       - "8080:80"

@@ -6,7 +6,7 @@
 <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-3 mb-4">
     <div>
         <h3 class="fw-bold mb-1 page-header-title">Dashboard {{ Auth::user()->isMarketing() ? 'Marketing' : (Auth::user()->isPengelola() ? 'Pengelola Mobil' : 'Operasional Admin') }}</h3>
-        <p class="text-muted small mb-0 page-header-subtitle">Ringkasan kondisi dan aktivitas operasional Showroom Atripo Carzone Cileunyi</p>
+        <p class="text-muted small mb-0 page-header-subtitle">Ringkasan kondisi dan aktivitas operasional Showroom MobilQ Cileunyi</p>
     </div>
     <div class="d-flex flex-wrap gap-2 w-100 w-sm-auto">
         @if(Auth::user()->canManageSales())

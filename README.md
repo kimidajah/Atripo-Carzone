@@ -1,10 +1,10 @@
-# 🚘 ATRIPO CARZONE — Sistem Informasi Penjualan & Persediaan Showroom Mobil Bekas
+# 🚘 MOBILQ — Sistem Informasi Penjualan & Persediaan Showroom Mobil Bekas
 
 ---
 
 ## 📌 1. Profil Aplikasi (Application Profile)
 
-**Sistem Informasi Penjualan & Persediaan Showroom Mobil Bekas (Atripo Carzone)** adalah platform aplikasi berbasis web internal yang dirancang khusus untuk mengelola operasional showroom mobil bekas **Atripo Carzone** yang berlokasi di Cileunyi, Kabupaten Bandung, Jawa Barat.
+**Sistem Informasi Penjualan & Persediaan Showroom Mobil Bekas (MobilQ)** adalah platform aplikasi berbasis web internal yang dirancang khusus untuk mengelola operasional showroom mobil bekas **MobilQ** yang berlokasi di Cileunyi, Kabupaten Bandung, Jawa Barat.
 
 Aplikasi ini dibuat untuk mempermudah pencatatan stok persediaan armada kendaraan, pendataan pelanggan, pemrosesan transaksi penjualan mobil secara efisien, serta menyajikan dashboard analitik laporan keuangan dan monitoring real-time bagi pemilik showroom.
 

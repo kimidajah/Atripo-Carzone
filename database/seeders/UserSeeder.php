@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
             ['username' => 'admin'],
             [
                 'name' => 'Admin Operasional',
-                'email' => 'admin@atripo.com',
+                'email' => 'admin@mobilq.com',
                 'password' => Hash::make('4dm1n'),
                 'role' => 'admin',
                 'phone' => '081234567890',
@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
             ['username' => 'owner'],
             [
                 'name' => 'Pemilik Showroom',
-                'email' => 'owner@atripo.com',
+                'email' => 'owner@mobilq.com',
                 'password' => Hash::make('own3r'),
                 'role' => 'owner',
                 'phone' => '081987654321',
@@ -39,7 +39,7 @@ class UserSeeder extends Seeder
             ['username' => 'marketing'],
             [
                 'name' => 'Staff Marketing',
-                'email' => 'marketing@atripo.com',
+                'email' => 'marketing@mobilq.com',
                 'password' => Hash::make('m4rk3t1ng'),
                 'role' => 'marketing',
                 'phone' => '081345678901',
@@ -50,7 +50,7 @@ class UserSeeder extends Seeder
             ['username' => 'pengelola'],
             [
                 'name' => 'Pengelola Mobil',
-                'email' => 'pengelola@atripo.com',
+                'email' => 'pengelola@mobilq.com',
                 'password' => Hash::make('p3ng3lol4'),
                 'role' => 'pengelola',
                 'phone' => '081456789012',

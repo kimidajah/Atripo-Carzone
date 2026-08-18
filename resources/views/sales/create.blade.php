@@ -8,7 +8,7 @@
         <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-3 mb-4">
             <div>
                 <h3 class="fw-bold mb-1 page-header-title">Transaksi Penjualan Baru</h3>
-                <p class="text-muted small mb-0 page-header-subtitle">Catat transaksi penjualan kendaraan tunai (cash) maupun kredit resmi Showroom Atripo Carzone</p>
+                <p class="text-muted small mb-0 page-header-subtitle">Catat transaksi penjualan kendaraan tunai (cash) maupun kredit resmi Showroom MobilQ</p>
             </div>
             <a href="{{ route('sales.index') }}" class="btn btn-outline-gold w-100 w-sm-auto text-center">
                 <i class="bi bi-arrow-left me-1"></i> Kembali ke Riwayat

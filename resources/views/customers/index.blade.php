@@ -6,7 +6,7 @@
 <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-3 mb-4">
     <div>
         <h3 class="fw-bold mb-1 page-header-title">Data Pelanggan</h3>
-        <p class="text-muted small mb-0 page-header-subtitle">Kelola data pembeli dan berkas persyaratan kredit Showroom Atripo Carzone</p>
+        <p class="text-muted small mb-0 page-header-subtitle">Kelola data pembeli dan berkas persyaratan kredit Showroom MobilQ</p>
     </div>
     @if(Auth::user()->canManageCustomers())
         <a href="{{ route('customers.create') }}" class="btn btn-gold px-3 w-100 w-sm-auto text-center">

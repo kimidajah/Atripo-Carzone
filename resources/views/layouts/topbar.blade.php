@@ -18,8 +18,8 @@
         
         <!-- Brand Title for Mobile & Desktop -->
         <h5 class="mb-0 fw-bold d-flex align-items-center text-dark">
-            <img src="{{ asset('images/logo.png') }}" alt="Logo Atripo Carzone" class="me-2 d-none d-sm-inline-block" style="height: 30px; width: auto; object-fit: contain;">
-            <span class="fs-6 fs-sm-5 fw-extrabold">ATRIPO <span class="brand-accent">CARZONE</span></span>
+            <img src="{{ asset('images/logo.png') }}" alt="Logo MobilQ" class="me-2 d-none d-sm-inline-block" style="height: 30px; width: auto; object-fit: contain;">
+            <span class="fs-6 fs-sm-5 fw-extrabold">MOBIL<span class="brand-accent">Q</span></span>
             <small class="text-muted fs-6 fw-normal d-none d-md-inline ms-2">| Sistem Informasi Penjualan & Persediaan</small>
         </h5>
     </div>

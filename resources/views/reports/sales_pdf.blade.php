@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Laporan Penjualan - ATRIPO CARZONE</title>
+    <title>Laporan Penjualan - MOBILQ</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -85,7 +85,7 @@
 
     <!-- Kop Surat / Header -->
     <div class="header">
-        <h2>ATRIPO CARZONE</h2>
+        <h2>MOBILQ</h2>
         <h3>Sistem Informasi Penjualan dan Persediaan Mobil Bekas</h3>
         <p>Jl. Raya Cileunyi, Kabupaten Bandung, Jawa Barat | Telp: 0812-3456-7890</p>
     </div>
@@ -153,7 +153,7 @@
         <div class="signature-box">
             <p>Cileunyi, Bandung, {{ now()->format('d F Y') }}</p>
             <p style="margin-bottom: 60px;">Pemilik Showroom / Admin,</p>
-            <p class="fw-bold">( Atripo Carzone )</p>
+            <p class="fw-bold">( MobilQ )</p>
         </div>
     </div>
 </body>

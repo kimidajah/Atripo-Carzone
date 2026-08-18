@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Showroom Atripo Carzone Cileunyi Bandung - Jual Beli Mobil Bekas Berkualitas, Siap Pakai, Garansi Terpercaya dengan Pembayaran Cash & Kredit Ringan.">
-    <title>Atripo Carzone - Showroom Mobil Bekas Berkualitas Cileunyi Bandung</title>
+    <meta name="description" content="Showroom MobilQ Cileunyi Bandung - Jual Beli Mobil Bekas Berkualitas, Siap Pakai, Garansi Terpercaya dengan Pembayaran Cash & Kredit Ringan.">
+    <title>MobilQ - Showroom Mobil Bekas Berkualitas Cileunyi Bandung</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
@@ -240,8 +240,8 @@
     <nav class="navbar navbar-expand-lg navbar-light fixed-top welcome-navbar py-3">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center me-4" href="#">
-                <img src="{{ asset('images/logo.png') }}" alt="Logo Atripo Carzone" class="me-2" style="height: 38px; width: auto;">
-                <span class="fw-extrabold text-dark fs-4">ATRIPO <span class="brand-accent">CARZONE</span></span>
+                <img src="{{ asset('images/logo.png') }}" alt="Logo MobilQ" class="me-2" style="height: 38px; width: auto;">
+                <span class="fw-extrabold text-dark fs-4">MOBIL<span class="brand-accent">Q</span></span>
             </a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarWelcomeContent" aria-controls="navbarWelcomeContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -383,7 +383,7 @@
                                 @else
                                     <div class="w-100 h-100 d-flex flex-column align-items-center justify-content-center text-muted bg-light">
                                         <i class="bi bi-car-front display-4 text-warning opacity-75"></i>
-                                        <span class="small text-muted mt-1">ATRIPO CARZONE</span>
+                                        <span class="small text-muted mt-1">MOBILQ</span>
                                     </div>
                                 @endif
 
@@ -424,7 +424,7 @@
                                     <button type="button" class="btn btn-outline-gold btn-sm flex-grow-1" data-bs-toggle="modal" data-bs-target="#carDetailModal{{ $car->id }}">
                                         <i class="bi bi-eye me-1"></i> Detail
                                     </button>
-                                    <a href="https://wa.me/6281234567890?text=Halo%20Atripo%20Carzone,%20saya%20tertarik%20dengan%20mobil%20{{ urlencode($car->brand . ' ' . $car->model_type . ' (' . $car->plate_number . ')') }}" target="_blank" class="btn btn-gold btn-sm" title="Tanya via WA">
+                                    <a href="https://wa.me/6281224531143?text=Halo%20MobilQ,%20saya%20tertarik%20dengan%20mobil%20{{ urlencode($car->brand . ' ' . $car->model_type . ' (' . $car->plate_number . ')') }}" target="_blank" class="btn btn-gold btn-sm" title="Tanya via WA">
                                         <i class="bi bi-whatsapp"></i> WA
                                     </a>
                                 </div>
@@ -447,7 +447,7 @@
                                                 @else
                                                     <div class="bg-light text-dark p-5 rounded-3 d-flex flex-column align-items-center justify-content-center text-center h-100 border" style="min-height: 200px;">
                                                         <i class="bi bi-car-front display-1 text-warning mb-2"></i>
-                                                        <span class="small text-muted">ATRIPO CARZONE</span>
+                                                        <span class="small text-muted">MOBILQ</span>
                                                     </div>
                                                 @endif
                                             </div>
@@ -476,7 +476,7 @@
                                     </div>
                                     <div class="modal-footer bg-light border-top">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                                        <a href="https://wa.me/6281234567890?text=Halo%20Atripo%20Carzone,%20saya%20ingin%20tanya%20detail%20dan%20skema%20kredit%20mobil%20{{ urlencode($car->brand . ' ' . $car->model_type . ' (' . $car->plate_number . ')') }}" target="_blank" class="btn btn-gold">
+                                        <a href="https://wa.me/6281224531143?text=Halo%20MobilQ,%20saya%20ingin%20tanya%20detail%20dan%20skema%20kredit%20mobil%20{{ urlencode($car->brand . ' ' . $car->model_type . ' (' . $car->plate_number . ')') }}" target="_blank" class="btn btn-gold">
                                             <i class="bi bi-whatsapp me-1"></i> Hubungi Sales via WhatsApp
                                         </a>
                                     </div>
@@ -503,7 +503,7 @@
                     <span class="badge bg-white text-dark border border-warning fw-bold px-3 py-1.5 mb-2 font-monospace">SIMULASI ANGSURAN</span>
                     <h2 class="fw-extrabold text-dark display-6 mb-3">Hitung Estimasi Cicilan Kredit Anda</h2>
                     <p class="text-secondary mb-4">
-                        Gunakan kalkulator simulasi di bawah ini untuk menghitung perkiraan Uang Muka (DP) dan Angsuran bulanan sesuai harga mobil pilihan Anda di Showroom Atripo Carzone.
+                        Gunakan kalkulator simulasi di bawah ini untuk menghitung perkiraan Uang Muka (DP) dan Angsuran bulanan sesuai harga mobil pilihan Anda di Showroom MobilQ.
                     </p>
                     <div class="d-flex flex-column gap-3 text-dark">
                         <div class="d-flex align-items-center">
@@ -567,7 +567,7 @@
     <section id="keunggulan" class="py-5" style="background: #FFFFFF;">
         <div class="container py-4 text-center">
             <span class="badge bg-warning bg-opacity-20 text-dark fw-bold px-3 py-1.5 mb-2 font-monospace">MENGAPA KAMI?</span>
-            <h2 class="fw-extrabold text-dark display-6 mb-5">Keunggulan Atripo Carzone</h2>
+            <h2 class="fw-extrabold text-dark display-6 mb-5">Keunggulan MobilQ</h2>
 
             <div class="row g-4">
                 <div class="col-12 col-md-6 col-lg-3">
@@ -618,24 +618,67 @@
         <div class="container py-4">
             <div class="search-card-glow p-4 p-md-5">
                 <div class="row align-items-center g-4">
-                    <div class="col-lg-7">
+                    <div class="col-lg-6">
                         <span class="badge bg-warning bg-opacity-20 text-dark fw-bold px-3 py-1.5 mb-2 font-monospace">KUNJUNGI SHOWROOM</span>
                         <h3 class="fw-extrabold text-dark mb-3">Siap Menemukan Mobil Bekas Pilihan Anda?</h3>
                         <p class="text-muted mb-4">
                             Kunjungi lokasi showroom kami di Cileunyi Bandung untuk langsung melakukan cek fisik dan test drive kendaraan favorit Anda.
                         </p>
 
-                        <div class="d-flex flex-column gap-2 text-dark mb-4">
-                            <div><i class="bi bi-geo-alt-fill text-warning me-2"></i> <strong>Alamat:</strong> Jl. Raya Cileunyi, Kabupaten Bandung, Jawa Barat</div>
-                            <div><i class="bi bi-clock-fill text-warning me-2"></i> <strong>Jam Operasional:</strong> Senin - Minggu (08:00 - 18:00 WIB)</div>
-                            <div><i class="bi bi-telephone-fill text-warning me-2"></i> <strong>Telepon / WA:</strong> 0812-3456-7890</div>
+                        <div class="d-flex flex-column gap-3 text-dark mb-4">
+                            <div class="p-3 bg-white rounded-3 border">
+                                <div class="fw-bold mb-2 text-dark"><i class="bi bi-person-lines-fill text-warning me-2 fs-5"></i> Kontak Showroom:</div>
+                                <div class="d-flex flex-column gap-2 ms-2">
+                                    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+                                        <div>
+                                            <strong class="text-dark">Bapa Ayi Ahmad Yani:</strong>
+                                            <span class="ms-1 font-monospace">0812-2453-1143</span>
+                                        </div>
+                                        <a href="https://wa.me/6281224531143?text=Halo%20Bapa%20Ayi%20Ahmad%20Yani,%20saya%20ingin%20tanya%20stok%20mobil%20di%20MobilQ" target="_blank" class="btn btn-success btn-sm font-monospace fw-bold">
+                                            <i class="bi bi-whatsapp me-1"></i> Chat WA
+                                        </a>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 border-top pt-2">
+                                        <div>
+                                            <strong class="text-dark">Bapa Toni:</strong>
+                                            <span class="ms-1 font-monospace">+62 857-9553-3099</span>
+                                        </div>
+                                        <a href="https://wa.me/6285795533099?text=Halo%20Bapa%20Toni,%20saya%20ingin%20tanya%20stok%20mobil%20di%20MobilQ" target="_blank" class="btn btn-success btn-sm font-monospace fw-bold">
+                                            <i class="bi bi-whatsapp me-1"></i> Chat WA
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="p-3 bg-white rounded-3 border">
+                                <div class="fw-bold mb-1 text-dark"><i class="bi bi-geo-alt-fill text-danger me-2 fs-5"></i> Lokasi & Koordinat:</div>
+                                <div class="text-secondary small mb-2">
+                                    Jl. Raya Cileunyi, Kabupaten Bandung, Jawa Barat<br>
+                                    <strong>Koordinat GPS:</strong> <span class="font-monospace text-dark fw-bold">-6.939025, 107.756353</span>
+                                </div>
+                                <a href="https://www.google.com/maps/search/?api=1&query=-6.939025,107.756353" target="_blank" class="btn btn-outline-dark btn-sm fw-bold">
+                                    <i class="bi bi-map-fill text-warning me-1"></i> Buka Google Maps
+                                </a>
+                            </div>
+
+                            <div>
+                                <i class="bi bi-clock-fill text-warning me-2"></i> <strong>Jam Operasional:</strong> Senin - Minggu (08:00 - 18:00 WIB)
+                            </div>
                         </div>
                     </div>
 
-                    <div class="col-lg-5 text-center text-lg-end">
-                        <a href="https://wa.me/6281234567890?text=Halo%20Atripo%20Carzone,%20saya%20ingin%20tanya%20stok%20mobil%20yang%20tersedia" target="_blank" class="btn btn-gold btn-lg px-4 py-3 fw-bold shadow">
-                            <i class="bi bi-whatsapp me-2 fs-5"></i> Hubungi Kami Via WhatsApp
-                        </a>
+                    <div class="col-lg-6">
+                        <div class="rounded-3 overflow-hidden border shadow-sm" style="height: 350px;">
+                            <iframe 
+                                src="https://maps.google.com/maps?q=-6.939025,107.756353&z=16&output=embed" 
+                                width="100%" 
+                                height="100%" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -647,7 +690,7 @@
         <div class="container text-center text-muted small">
             <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
                 <div>
-                    &copy; {{ date('Y') }} <strong class="text-dark">ATRIPO CARZONE SHOWROOM</strong>. Hak Cipta Dilindungi.
+                    &copy; {{ date('Y') }} <strong class="text-dark">MOBILQ SHOWROOM</strong>. Hak Cipta Dilindungi.
                 </div>
                 <div class="d-flex gap-3">
                     <a href="#hero" class="text-muted text-decoration-none">Beranda</a>
@@ -667,22 +710,15 @@
     </script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const toggler = document.querySelector('.welcome-navbar .navbar-toggler');
             const collapseEl = document.getElementById('navbarWelcomeContent');
-            if (toggler && collapseEl) {
-                toggler.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    if (collapseEl.classList.contains('show')) {
-                        collapseEl.classList.remove('show');
-                    } else {
-                        collapseEl.classList.add('show');
-                    }
-                });
-
+            if (collapseEl) {
                 // Auto-close menu when clicking a link inside mobile dropdown
                 collapseEl.querySelectorAll('a.nav-link, a.btn').forEach(function (link) {
                     link.addEventListener('click', function () {
-                        collapseEl.classList.remove('show');
+                        if (window.innerWidth < 992 && collapseEl.classList.contains('show')) {
+                            const bsCollapse = bootstrap.Collapse.getInstance(collapseEl) || new bootstrap.Collapse(collapseEl, { toggle: false });
+                            bsCollapse.hide();
+                        }
                     });
                 });
             }

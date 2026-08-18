@@ -6,7 +6,7 @@
 <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-3 mb-4">
     <div>
         <h3 class="fw-bold mb-1 page-header-title">Data Mobil</h3>
-        <p class="text-muted small mb-0 page-header-subtitle">Kelola armada kendaraan yang tersedia di Atripo Carzone Cileunyi</p>
+        <p class="text-muted small mb-0 page-header-subtitle">Kelola armada kendaraan yang tersedia di MobilQ Cileunyi</p>
     </div>
     <div class="d-flex flex-wrap gap-2 w-100 w-sm-auto">
         <!-- View Switcher Buttons -->
@@ -75,7 +75,7 @@
                         @else
                             <div class="w-100 h-100 d-flex flex-column align-items-center justify-content-center text-muted">
                                 <i class="bi bi-car-front text-warning display-4"></i>
-                                <span class="small text-white-50 mt-1">ATRIPO CARZONE</span>
+                                <span class="small text-white-50 mt-1">MOBILQ</span>
                             </div>
                         @endif
                         

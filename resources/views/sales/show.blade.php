@@ -97,7 +97,7 @@
 <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-3 mb-4 d-print-none">
     <div>
         <h3 class="fw-bold mb-1 page-header-title">Invoice Transaksi Penjualan</h3>
-        <p class="text-muted small mb-0 page-header-subtitle">Bukti resmi transaksi penjualan kendaraan Atripo Carzone</p>
+        <p class="text-muted small mb-0 page-header-subtitle">Bukti resmi transaksi penjualan kendaraan MobilQ</p>
     </div>
     <div class="d-flex flex-wrap gap-2 w-100 w-sm-auto">
         <a href="{{ route('sales.index') }}" class="btn btn-outline-gold flex-grow-1 flex-sm-grow-0 text-center">
@@ -116,11 +116,11 @@
         <div class="col-12 col-sm-6">
             <div class="d-flex align-items-center mb-1">
                 <i class="bi bi-car-front-fill text-warning me-2 fs-2"></i>
-                <h3 class="fw-extrabold mb-0 fs-3">ATRIPO <span class="text-warning">CARZONE</span></h3>
+                <h3 class="fw-extrabold mb-0 fs-3">MOBIL<span class="text-warning">Q</span></h3>
             </div>
             <p class="text-muted small mb-0" style="font-size: 0.825rem;">
                 Jl. Raya Cileunyi, Kabupaten Bandung, Jawa Barat<br>
-                Telp/WA: 0812-3456-7890 | Email: info@atripo-carzone.com
+                Telp/WA: 0812-3456-7890 | Email: info@mobilq.com
             </p>
         </div>
         <div class="col-12 col-sm-6 text-sm-end">
@@ -303,8 +303,8 @@
             <p class="fw-bold text-dark mb-0">({{ $sale->customer->name ?? 'Pelanggan' }})</p>
         </div>
         <div class="col-6">
-            <p class="text-muted signature-space mb-4">Hormat Kami (Atripo Carzone),</p>
-            <p class="fw-bold text-dark mb-0">({{ $sale->user->name ?? 'Admin Atripo' }})</p>
+            <p class="text-muted signature-space mb-4">Hormat Kami (MobilQ),</p>
+            <p class="fw-bold text-dark mb-0">({{ $sale->user->name ?? 'Admin MobilQ' }})</p>
         </div>
     </div>
 </div>

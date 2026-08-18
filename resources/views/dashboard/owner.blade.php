@@ -6,7 +6,7 @@
 <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-3 mb-4">
     <div>
         <h3 class="fw-bold mb-1 page-header-title">Dashboard Monitoring Pemilik</h3>
-        <p class="text-muted small mb-0 page-header-subtitle">Pemantauan kinerja operasional dan laporan persediaan Showroom Atripo Carzone</p>
+        <p class="text-muted small mb-0 page-header-subtitle">Pemantauan kinerja operasional dan laporan persediaan Showroom MobilQ</p>
     </div>
     <div>
         <span class="badge bg-dark text-warning border border-warning px-3 py-2 fs-6">

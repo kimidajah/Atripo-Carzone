@@ -7,10 +7,10 @@
 <nav class="sidebar d-flex flex-column flex-shrink-0 p-3">
     <!-- Brand Logo Area -->
     <a href="{{ route('dashboard') }}" class="d-none d-md-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none px-2 py-1">
-        <img src="{{ asset('images/logo.png') }}" alt="Logo Atripo Carzone" class="me-2" style="height: 42px; width: auto; object-fit: contain;">
+        <img src="{{ asset('images/logo.png') }}" alt="Logo MobilQ" class="me-2" style="height: 42px; width: auto; object-fit: contain;">
         <div class="lh-sm">
-            <span class="fs-5 fw-extrabold tracking-tight text-dark">ATRIPO</span>
-            <span class="fs-5 fw-extrabold text-warning">CARZONE</span>
+            <span class="fs-5 fw-extrabold tracking-tight text-dark">MOBIL</span>
+            <span class="fs-5 fw-extrabold text-warning">Q</span>
             <div class="text-muted" style="font-size: 0.625rem; letter-spacing: 0.8px; font-weight: 600;">SHOWROOM MOBIL BEKAS</div>
         </div>
     </a>

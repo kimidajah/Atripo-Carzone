@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - ATRIPO CARZONE Showroom Mobil Bekas</title>
+    <title>Login - MOBILQ Showroom Mobil Bekas</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
@@ -414,9 +414,9 @@
                 <div class="col-lg-6 login-brand-panel d-none d-lg-flex">
                     <div>
                         <div class="d-flex align-items-center mb-3 animate-step-1">
-                            <img src="{{ asset('images/logo.png') }}" alt="Logo Atripo Carzone" class="me-3 brand-logo-img" style="height: 60px; width: auto; object-fit: contain;">
+                            <img src="{{ asset('images/logo.png') }}" alt="Logo MobilQ" class="me-3 brand-logo-img" style="height: 60px; width: auto; object-fit: contain;">
                             <div>
-                                <h2 class="fw-extrabold mb-0 tracking-tight text-dark">ATRIPO <span class="text-warning">CARZONE</span></h2>
+                                <h2 class="fw-extrabold mb-0 tracking-tight text-dark">MOBIL<span class="text-warning">Q</span></h2>
                                 <p class="text-warning-50 mb-0 small fw-semibold text-uppercase" style="letter-spacing: 1px;">Showroom Mobil Bekas</p>
                             </div>
                         </div>
@@ -425,7 +425,7 @@
 
                         <h4 class="fw-bold mb-3 text-dark animate-step-2">Sistem Informasi Penjualan & Persediaan</h4>
                         <p class="text-muted leading-relaxed animate-step-3" style="font-size: 0.95rem;">
-                            Platform internal terpusat untuk pengelolaan persediaan armada kendaraan, pencatatan transaksi penjualan, dan pembuatan laporan operasional di Showroom Atripo Carzone Cileunyi, Bandung.
+                            Platform internal terpusat untuk pengelolaan persediaan armada kendaraan, pencatatan transaksi penjualan, dan pembuatan laporan operasional di Showroom MobilQ Cileunyi, Bandung.
                         </p>
                     </div>
 
@@ -446,8 +446,8 @@
                 <div class="col-lg-6 login-form-panel">
                     <div class="mb-4 animate-step-1">
                         <div class="d-lg-none mb-3 text-center">
-                            <img src="{{ asset('images/logo.png') }}" alt="Logo Atripo Carzone" class="mb-2 brand-logo-img" style="height: 55px; width: auto;">
-                            <h3 class="fw-bold mb-0">ATRIPO <span class="text-warning">CARZONE</span></h3>
+                            <img src="{{ asset('images/logo.png') }}" alt="Logo MobilQ" class="mb-2 brand-logo-img" style="height: 55px; width: auto;">
+                            <h3 class="fw-bold mb-0">MOBIL<span class="text-warning">Q</span></h3>
                             <p class="text-muted small">Showroom Mobil Bekas Cileunyi</p>
                         </div>
 
@@ -508,7 +508,7 @@
                     </form>
 
                     <div class="mt-4 pt-3 border-top text-center text-muted animate-step-4" style="font-size: 0.8rem;">
-                        <i class="bi bi-shield-lock-fill text-warning me-1"></i> Sistem Informasi Internal Atripo Carzone
+                        <i class="bi bi-shield-lock-fill text-warning me-1"></i> Sistem Informasi Internal MobilQ
                     </div>
                 </div>
             </div>

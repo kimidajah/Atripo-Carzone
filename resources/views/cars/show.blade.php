@@ -6,7 +6,7 @@
 <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-3 mb-4">
     <div>
         <h3 class="fw-bold mb-1 page-header-title">Detail Kendaraan</h3>
-        <p class="text-muted small mb-0 page-header-subtitle">Informasi spesifikasi lengkap unit kendaraan Showroom Atripo Carzone</p>
+        <p class="text-muted small mb-0 page-header-subtitle">Informasi spesifikasi lengkap unit kendaraan Showroom MobilQ</p>
     </div>
     <div class="d-flex flex-wrap gap-2 w-100 w-sm-auto">
         <a href="{{ route('cars.index') }}" class="btn btn-outline-gold flex-grow-1 flex-sm-grow-0 text-center">
@@ -29,7 +29,7 @@
             @else
                 <div class="bg-dark text-white p-5 d-flex flex-column align-items-center justify-content-center h-100 min-vh-40 text-center">
                     <i class="bi bi-car-front display-1 text-warning mb-3"></i>
-                    <h5 class="fw-bold text-white mb-1">ATRIPO CARZONE</h5>
+                    <h5 class="fw-bold text-white mb-1">MOBILQ</h5>
                     <span class="text-muted small">Foto Belum Diunggah</span>
                 </div>
             @endif

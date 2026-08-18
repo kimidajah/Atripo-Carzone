@@ -6,7 +6,7 @@
 <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-3 mb-4">
     <div>
         <h3 class="fw-bold mb-1 page-header-title">Riwayat Transaksi Penjualan</h3>
-        <p class="text-muted small mb-0 page-header-subtitle">Daftar seluruh transaksi penjualan kendaraan di Showroom Atripo Carzone (Cash & Kredit)</p>
+        <p class="text-muted small mb-0 page-header-subtitle">Daftar seluruh transaksi penjualan kendaraan di Showroom MobilQ (Cash & Kredit)</p>
     </div>
     @if(Auth::user()->canManageSales())
         <a href="{{ route('sales.create') }}" class="btn btn-gold px-3 w-100 w-sm-auto text-center">
